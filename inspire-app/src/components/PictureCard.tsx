@@ -1,21 +1,37 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import CampingPhoto from '../assets/camping.png'; 
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-function PictureCard() {
-  const authorLink = 'https://en.wikipedia.org/wiki/John_Muir';
+type Props = {
+  quote?: string;
+  author?: string;
+  paintThePicture?: string;
+  authorLink?: string;
+  pictureLink?: string;
+};
+const PictureCard: React.FC<Props> = ({
+  quote,
+  author,
+  paintThePicture,
+  authorLink,
+  pictureLink
+}) => {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={CampingPhoto} />
+    <Card style={{ width: "33rem" }}>
+      <Card.Img variant="top" src={pictureLink} />
       <Card.Body>
-        <Card.Title>John Muir</Card.Title>
+        <Card.Title>{author}</Card.Title>
         <Card.Text>
-          <em>"In every walk with nature, one recieves far more than he seeks."</em>
+          <em>"{quote}"</em>
+          <br />
+          <br />
+          <div>{paintThePicture}</div>
         </Card.Text>
-        <Button variant="primary" href={authorLink} target="_blank">More about author</Button>
+        <Button variant="primary" href={authorLink} target="_blank">
+          More about author
+        </Button>
       </Card.Body>
     </Card>
   );
-}
+};
 
 export default PictureCard;
